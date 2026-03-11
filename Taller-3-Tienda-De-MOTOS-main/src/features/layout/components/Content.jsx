@@ -322,7 +322,7 @@ export const Content = () => {
               variant="contained"
               size="large"
               startIcon={<GitHubIcon />}
-              href="https://github.com/fauriorrego-create/Taller-3-Tienda-De-Autos"
+              href="https://github.com/Mayaemerson14/Taller-3----Bajaj.git"
               target="_blank"
               rel="noopener noreferrer"
               sx={{
