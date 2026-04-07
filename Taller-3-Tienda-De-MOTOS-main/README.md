@@ -1,27 +1,32 @@
-# 🚗 WEB SHOP - Tienda de Autos
+🏍️ BAJAJ WEB SHOP - Tienda de Motocicletas
 
-Aplicación web desarrollada con **React + Vite + Material UI** que simula una **tienda online de automóviles**, donde los usuarios pueden explorar vehículos, ver ofertas, agregar autos a favoritos y gestionar su cuenta.
+Aplicación web desarrollada con React + Vite + Material UI que simula una tienda online de motocicletas inspirada en la marca Bajaj.
 
-El proyecto utiliza una **arquitectura modular basada en features**, lo que permite una organización clara, escalable y mantenible del código.
+La aplicación permite a los usuarios explorar diferentes modelos de motos, revisar promociones, guardar motocicletas en favoritos y navegar por las distintas secciones del catálogo.
 
----
+El proyecto fue construido utilizando una arquitectura modular basada en features, lo que permite mantener una organización clara del código, facilitar su mantenimiento y permitir que el sistema pueda crecer fácilmente con nuevas funcionalidades.
 
-# 🛠 Tecnologías utilizadas
+🛠 Tecnologías utilizadas
 
-* React
-* Vite
-* Material UI
-* JavaScript (ES6+)
-* React Hooks
-* Arquitectura Feature-Based
-* ESLint
+El desarrollo del proyecto se realizó utilizando las siguientes tecnologías:
 
----
+React
 
-# 📁 Estructura del proyecto
+Vite
 
-```
-WEB_SHOP
+Material UI
+
+JavaScript (ES6+)
+
+React Hooks
+
+Arquitectura Feature-Based
+
+ESLint
+
+📁 Estructura del proyecto
+
+BAJAJ_WEB_SHOP
 │
 ├── .vscode
 ├── node_modules
@@ -36,7 +41,7 @@ WEB_SHOP
 │   ├── features
 │   │   └── auth
 │   │       │
-│   │       ├── Components
+│   │       ├── components
 │   │       │   ├── Account.jsx
 │   │       │   ├── Favorite.jsx
 │   │       │   └── Shopping.jsx
@@ -91,191 +96,134 @@ WEB_SHOP
 ├── README.md
 ├── Realme.md
 └── vite.config.js
-```
 
----
+🧩 Arquitectura del proyecto
 
-# 🧩 Arquitectura del proyecto
+La aplicación utiliza una arquitectura modular basada en features, en la cual cada módulo organiza sus propios componentes, lógica y vistas dentro de una misma estructura.
 
-El proyecto utiliza una **arquitectura modular basada en features**, donde cada módulo agrupa:
+Cada módulo contiene:
 
-* **components → interfaz de usuario**
-* **hooks → lógica reutilizable**
-* **pages → páginas principales**
+components → elementos visuales de la interfaz
 
-Esto permite:
+hooks → lógica reutilizable del sistema
 
-✔ Código más organizado
-✔ Mejor mantenimiento
-✔ Escalabilidad del proyecto
+pages → vistas principales de cada sección
+
+Este tipo de arquitectura permite:
+
+✔ Mejor organización del código
+✔ Mayor facilidad para realizar mantenimiento
 ✔ Separación clara de responsabilidades
+✔ Escalabilidad del proyecto
 
----
+👤 Módulo de usuario (Auth)
 
-# 🔐 Módulo Auth
+Este módulo se encarga de gestionar las funcionalidades relacionadas con los usuarios dentro de la aplicación.
 
-Este módulo gestiona las funcionalidades relacionadas con el usuario.
+Account.jsx
 
-### Account.jsx
+Permite al usuario:
 
-Permite:
+Crear o registrar una cuenta
 
-* Registrar usuarios
-* Editar información del perfil
-* Subir imagen de perfil
-* Eliminar cuenta
+Modificar su información personal
 
-### Favorite.jsx
+Subir una imagen de perfil
 
-Permite gestionar los **autos favoritos del usuario**.
+Eliminar su cuenta
 
-### Shopping.jsx
+Favorite.jsx
 
-Simula el **proceso de compra o selección de vehículos**.
+Permite guardar y administrar las motocicletas favoritas que el usuario seleccione dentro del catálogo.
 
----
+Shopping.jsx
 
-# 🧱 Layout
+Simula el proceso de compra o selección de motocicletas dentro de la tienda.
 
-Define la estructura visual principal de la aplicación.
+🧱 Layout
 
-### Header.jsx
+El módulo Layout define la estructura visual principal de la aplicación.
 
-Barra de navegación principal.
+Header.jsx
 
-### Content.jsx
+Contiene la barra de navegación principal donde el usuario puede acceder a las diferentes secciones del sitio.
 
-Contenedor donde se renderizan las diferentes vistas.
+Content.jsx
 
-### Footer.jsx
+Componente que actúa como contenedor principal donde se renderizan las distintas páginas del proyecto.
 
-Pie de página con información adicional de la tienda.
+Footer.jsx
 
----
+Pie de página que muestra información adicional sobre la tienda.
 
-# 🚘 Módulo View
+🏍️ Módulo View
 
-Contiene los componentes que muestran los vehículos disponibles.
+El módulo View contiene los componentes encargados de mostrar las motocicletas disponibles dentro del catálogo.
 
-### Article.jsx
+Article.jsx
 
-Componente que representa un **auto dentro de la tienda** mostrando:
+Representa una motocicleta dentro de la tienda, mostrando información como:
 
-* Imagen
-* Marca
-* Modelo
-* Precio
-* Características principales
+Imagen del modelo
 
-### Offer.jsx
+Nombre de la moto
 
-Sección de **autos en promoción o descuento**.
+Precio
 
----
+Características principales
 
-# 🧠 Hooks personalizados
+Offer.jsx
 
-Dentro de `view/hooks` se incluyen implementaciones personalizadas de hooks de React para entender su funcionamiento:
+Sección donde se presentan motocicletas en promoción o con descuentos especiales.
 
-* useState
-* useEffect
-* useContext
-* useReducer
-* useMemo
-* useRef
-* useCallback
+🧠 Hooks personalizados
 
-También incluye:
+Dentro de la carpeta view/hooks se incluyen diferentes implementaciones de hooks personalizados de React para comprender mejor su funcionamiento.
 
-### useFavorites
+Entre ellos se encuentran:
 
-Gestión de autos favoritos.
+useState
 
-### useOnlineStatus
+useEffect
 
-Detecta si el usuario está **online o offline**.
+useContext
 
----
+useReducer
 
-# 🎨 Shared
+useMemo
 
-Contiene recursos compartidos del proyecto.
+useRef
 
-### styles
+useCallback
 
-Archivos de estilos globales de la aplicación.
+También se incluyen hooks adicionales como:
 
----
+useFavorites
 
-# 🚀 Instalación
+Permite gestionar las motocicletas favoritas seleccionadas por el usuario.
 
-Clonar el repositorio:
+useOnlineStatus
 
-```
-git clone https://github.com/tu-usuario/web-shop.git
-```
+Permite detectar si el usuario se encuentra conectado o desconectado de internet.
 
-Entrar a la carpeta:
+🎨 Shared
 
-```
-cd web-shop
-```
+La carpeta shared contiene recursos compartidos que pueden ser utilizados por diferentes partes de la aplicación.
 
-Instalar dependencias:
+styles
 
-```
-npm install
-```
+Incluye los estilos globales utilizados en el proyecto.
 
-Ejecutar el proyecto:
+👨‍💻 Autor
 
-```
-npm run dev
-```
+Proyecto desarrollado como práctica académica para fortalecer conocimientos en:
 
----
+React
 
-# 🌐 Acceso a la aplicación
+Arquitectura modular
 
-```
-http://localhost:5173
-```
+Hooks personalizados
 
----
+Desarrollo de interfaces con Material UI
 
-# ♿ Accesibilidad
-
-La aplicación incluye mejoras de accesibilidad como:
-
-* atributos `aria-label`
-* textos alternativos `alt`
-* landmarks semánticos
-* componentes accesibles de Material UI
-
-Esto mejora la compatibilidad con **lectores de pantalla y herramientas de accesibilidad**.
-
----
-
-# 📈 Mejoras futuras
-
-* Integración con API real de autos
-* Sistema de autenticación completo
-* Carrito de compras real
-* Filtros por marca, precio y año
-* Sistema de pago
-* Panel de administración
-* Base de datos de vehículos
-
----
-
-# 👨‍💻 Autor
-
-Proyecto desarrollado como práctica de:
-
-* React
-* Arquitectura modular
-* Hooks personalizados
-* Accesibilidad web
-* Interfaces modernas con Material UI
-
----
+Organización de proyectos frontend

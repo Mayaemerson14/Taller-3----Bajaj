@@ -13,9 +13,9 @@ import {
   List,
   ListItem,
   ListItemButton,
-  ListItemIcon,
   ListItemText,
-  InputBase
+  InputBase,
+  Divider
 } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
@@ -35,237 +35,136 @@ export const Header = () => {
   const { count } = useFavorites();
   const { totalItems } = useShopping();
 
-  const [openMenu, setOpenMenu] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setOpenMenu(!openMenu);
-  };
-
-  const linkStyle = {
-    textDecoration: "none",
-    color: "inherit"
-  };
+  const toggleDrawer = () => setOpen(!open);
 
   const menuItems = [
-    { text: "Inicio", icon: <HomeIcon />, link: "/" },
-    { text: "Ofertas", icon: <LocalOfferIcon />, link: "/Offer" },
-    { text: "Artículos", icon: <ArticleIcon />, link: "/Article" },
-    { text: "Favoritos", icon: <FavoriteIcon />, link: "/Favorite" },
-    { text: "Carrito", icon: <ShoppingCartIcon />, link: "/Shopping" },
-    { text: "Cuenta", icon: <PersonIcon />, link: "/Account" }
+    { text: "Inicio", link: "/", icon: <HomeIcon /> },
+    { text: "Ofertas", link: "/Offer", icon: <LocalOfferIcon /> },
+    { text: "Artículos", link: "/Article", icon: <ArticleIcon /> },
+    { text: "Favoritos", link: "/Favorite", icon: <FavoriteIcon /> },
+    { text: "Carrito", link: "/Shopping", icon: <ShoppingCartIcon /> },
+    { text: "Cuenta", link: "/Account", icon: <PersonIcon /> }
   ];
 
   return (
     <Box component="header">
 
-      {/* BARRA SUPERIOR */}
-
-      <Box
-        sx={{
-          background: "black",
-          color: "white",
-          textAlign: "center",
-          py: 0.7,
-          fontSize: 13,
-          position: "fixed",
-          width: "100%",
-          zIndex: 1300
-        }}
-      >
-        Envíos a todo Colombia 🚚
-      </Box>
-
-
       {/* HEADER PRINCIPAL */}
-
       <AppBar
         position="fixed"
-        color="inherit"
-        elevation={1}
-        sx={{ top: "28px" }}
+        elevation={0}
+        sx={{
+          background: "#0f172a",
+          px: 2
+        }}
       >
 
-        <Toolbar
-          sx={{
-            justifyContent: "space-between",
-            gap: 2
-          }}
-        >
+        <Toolbar sx={{ justifyContent: "space-between" }}>
 
-          {/* BOTÓN MENÚ */}
+          {/* IZQUIERDA */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 
-          <IconButton
-            onClick={toggleMenu}
-            aria-label="Abrir menú de navegación"
-            sx={{ display: { xs: "flex", md: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
+            <IconButton
+              onClick={toggleDrawer}
+              sx={{ color: "white" }}
+            >
+              <MenuIcon />
+            </IconButton>
 
+            <Typography
+              component={NavLink}
+              to="/"
+              sx={{
+                color: "white",
+                textDecoration: "none",
+                fontWeight: "bold",
+                fontSize: 20
+              }}
+            >
+              Bajaj
+            </Typography>
 
-          {/* LOGO */}
-
-          <Typography
-            variant="h5"
-            component={NavLink}
-            to="/"
-            fontWeight="bold"
-            sx={linkStyle}
-          >
-            Bajaj 
-          </Typography>
-
+          </Box>
 
           {/* BUSCADOR */}
-
           <Box
-            role="search"
             sx={{
               display: { xs: "none", md: "flex" },
               alignItems: "center",
-              background: "#f5f5f5",
-              borderRadius: 2,
+              background: "#1e293b",
+              borderRadius: "50px",
               px: 2,
-              py: 0.5,
               width: "40%"
             }}
           >
 
-            <SearchIcon
-              sx={{ mr: 1, color: "gray" }}
-              aria-hidden="true"
-            />
+            <SearchIcon sx={{ color: "gray", mr: 1 }} />
 
             <InputBase
-              placeholder="Buscar motos..."
-              inputProps={{
-                "aria-label": "Buscar motos"
-              }}
-              sx={{ width: "100%" }}
+              placeholder="Buscar..."
+              sx={{ color: "white", width: "100%" }}
             />
 
           </Box>
 
+          {/* DERECHA */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
 
-          {/* ICONOS */}
+            <Button
+              component={NavLink}
+              to="/"
+              sx={{ color: "white", display: { xs: "none", md: "flex" } }}
+              startIcon={<HomeIcon />}
+            >
+              Inicio
+            </Button>
 
-          <Box
-            sx={{ display: "flex", gap: 1 }}
-            component="nav"
-            aria-label="Acciones de usuario"
-          >
+            <Button
+              component={NavLink}
+              to="/Offer"
+              sx={{ color: "white", display: { xs: "none", md: "flex" } }}
+              startIcon={<LocalOfferIcon />}
+            >
+              Ofertas
+            </Button>
 
             <IconButton
               component={NavLink}
               to="/Favorite"
-              color="inherit"
-              aria-label="Ir a favoritos"
+              sx={{ color: "white" }}
             >
-
               <Badge badgeContent={count} color="error">
-
                 <FavoriteIcon />
-
               </Badge>
-
             </IconButton>
 
             <IconButton
               component={NavLink}
               to="/Shopping"
-              color="inherit"
-              aria-label="Ir al carrito de compras"
+              sx={{ color: "white" }}
             >
-
               <Badge badgeContent={totalItems} color="error">
-
                 <ShoppingCartIcon />
-
               </Badge>
-
             </IconButton>
 
           </Box>
 
         </Toolbar>
-
       </AppBar>
 
+      {/* DRAWER */}
+      <Drawer anchor="left" open={open} onClose={toggleDrawer}>
 
-      {/* MENÚ DESKTOP */}
+        <Box sx={{ width: 260 }}>
 
-      <AppBar
-        position="fixed"
-        color="inherit"
-        elevation={0}
-        sx={{
-          top: "92px",
-          borderTop: "1px solid #eee",
-          borderBottom: "1px solid #eee",
-          display: { xs: "none", md: "block" }
-        }}
-      >
-
-        <Toolbar
-          component="nav"
-          aria-label="Navegación principal"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 4
-          }}
-        >
-
-          <Button component={NavLink} to="/" startIcon={<HomeIcon />} color="inherit">
-            Inicio
-          </Button>
-
-          <Button component={NavLink} to="/Offer" startIcon={<LocalOfferIcon />} color="inherit">
-            Ofertas
-          </Button>
-
-          <Button component={NavLink} to="/Article" startIcon={<ArticleIcon />} color="inherit">
-            Artículos
-          </Button>
-
-          <Button component={NavLink} to="/Favorite" startIcon={<FavoriteIcon />} color="inherit">
-            <Badge badgeContent={count} color="error">
-              Favoritos
-            </Badge>
-          </Button>
-
-          <Button component={NavLink} to="/Shopping" startIcon={<ShoppingCartIcon />} color="inherit">
-            <Badge badgeContent={totalItems} color="error">
-              Carrito
-            </Badge>
-          </Button>
-
-          <Button component={NavLink} to="/Account" startIcon={<PersonIcon />} color="inherit">
-            Cuenta
-          </Button>
-
-        </Toolbar>
-
-      </AppBar>
-
-
-      {/* DRAWER MOBILE */}
-
-      <Drawer
-        anchor="left"
-        open={openMenu}
-        onClose={toggleMenu}
-        aria-label="Menú de navegación"
-      >
-
-        <Box sx={{ width: 250 }}>
-
-          <Typography
-            variant="h6"
-            sx={{ p: 2 }}
-          >
-            Menú
+          <Typography sx={{ p: 2, fontWeight: "bold" }}>
+            Navegación
           </Typography>
+
+          <Divider />
 
           <List>
 
@@ -276,14 +175,15 @@ export const Header = () => {
                 <ListItemButton
                   component={NavLink}
                   to={item.link}
-                  onClick={toggleMenu}
+                  onClick={toggleDrawer}
                 >
 
-                  <ListItemIcon>
-                    {item.icon}
-                  </ListItemIcon>
+                  {item.icon}
 
-                  <ListItemText primary={item.text} />
+                  <ListItemText
+                    primary={item.text}
+                    sx={{ ml: 2 }}
+                  />
 
                 </ListItemButton>
 
@@ -297,11 +197,7 @@ export const Header = () => {
 
       </Drawer>
 
-
-      {/* ESPACIADORES */}
-
-      <Toolbar />
-      <Toolbar />
+      {/* ESPACIADOR */}
       <Toolbar />
 
     </Box>

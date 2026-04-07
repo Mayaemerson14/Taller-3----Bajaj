@@ -1,8 +1,6 @@
 import {
   Container,
   Typography,
-  Card,
-  CardContent,
   CardMedia,
   Button,
   Box,
@@ -26,186 +24,159 @@ export const Content = () => {
   ];
 
   return (
-
     <main>
 
       {/* HERO */}
-
-      <Box
-        component="section"
-        aria-labelledby="hero-title"
-        sx={{
-          position: "relative",
-          height: { xs: "60vh", md: "80vh" },
-          overflow: "hidden"
-        }}
-      >
-
-        <Box
-          component="img"
-          src="/img/moto 4.jpg"
-          alt="Motocicleta deportiva moderna"
-          loading="eager"
-          sx={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-          }}
-        />
-
-        <Box
-          sx={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(135deg,#1f2937,#020617)",
-            opacity: 0.8
-          }}
-        />
-
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 1,
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            textAlign: "center",
-            color: "white",
-            px: 2
-          }}
-        >
-
-          <Typography
-            id="hero-title"
-            variant="h3"
-            component="h1"
-            fontWeight="bold"
-          >
-            Explora el mundo de las motocicletas
-          </Typography>
-
-          <Typography
-            component="p"
-            sx={{ mt: 2, maxWidth: 600 }}
-          >
-            Encuentra motos confiables, económicas y deportivas.
-            Diseñadas para moverte con libertad en la ciudad
-            o disfrutar la carretera.
-          </Typography>
-
-          <Button
-            variant="contained"
-            size="large"
-            component={RouterLink}
-            to="/Article"
-            sx={{
-              mt: 4,
-              backgroundColor: "#ff6b00",
-              "&:hover": { backgroundColor: "#e85f00" }
-            }}
-          >
-            Ver catálogo
-          </Button>
-
-        </Box>
-
-      </Box>
-
-      {/* CARACTERISTICAS */}
-
-      <Container
-        component="section"
-        aria-labelledby="features-title"
-        sx={{ py: 8 }}
-      >
-
-        <Typography
-          id="features-title"
-          variant="h4"
-          component="h2"
-          textAlign="center"
-          fontWeight="bold"
-          mb={5}
-        >
-          ¿Por qué elegir nuestras motos?
-        </Typography>
-
+      <Container sx={{ py: 10 }}>
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={6}
-          justifyContent="center"
-          textAlign="center"
+          alignItems="center"
         >
 
-          <Box>
-
-            <SpeedIcon sx={{ fontSize: 40, mb: 1 }} />
-
-            <Typography component="h3" fontWeight="bold">
-              Potencia eficiente
+          <Box flex={1}>
+            <Typography variant="h3" fontWeight="bold">
+              Tu próxima moto empieza aquí
             </Typography>
 
-            <Typography color="text.secondary">
-              Motores diseñados para ofrecer buen rendimiento
-              y bajo consumo de combustible.
+            <Typography sx={{ mt: 2, color: "text.secondary" }}>
+              Descubre modelos diseñados para velocidad, ahorro
+              y estilo. Perfectas para tu día a día o aventuras.
             </Typography>
 
+            <Button
+              component={RouterLink}
+              to="/Article"
+              variant="contained"
+              sx={{
+                mt: 4,
+                borderRadius: "30px",
+                px: 4,
+                background: "linear-gradient(45deg,#ff416c,#ff4b2b)"
+              }}
+            >
+              Explorar catálogo
+            </Button>
           </Box>
 
-          <Box>
-
-            <SecurityIcon sx={{ fontSize: 40, mb: 1 }} />
-
-            <Typography component="h3" fontWeight="bold">
-              Conducción segura
-            </Typography>
-
-            <Typography color="text.secondary">
-              Sistemas de frenos y estabilidad que brindan
-              mayor control en todo momento.
-            </Typography>
-
-          </Box>
-
-          <Box>
-
-            <TwoWheelerIcon sx={{ fontSize: 40, mb: 1 }} />
-
-            <Typography component="h3" fontWeight="bold">
-              Diseños modernos
-            </Typography>
-
-            <Typography color="text.secondary">
-              Motocicletas con estilos deportivos
-              pensados para la ciudad y la carretera.
-            </Typography>
-
+          <Box flex={1}>
+            <Box
+              component="img"
+              src="/img/moto 4.jpg"
+              alt="Moto"
+              sx={{
+                width: "100%",
+                borderRadius: 4,
+                boxShadow: 6
+              }}
+            />
           </Box>
 
         </Stack>
-
       </Container>
 
-      {/* PRODUCTOS */}
+      {/* NUEVA SECCIÓN */}
+      <Box sx={{ py: 10, background: "#0f172a", color: "white" }}>
+        <Container>
 
-      <Container
-        component="section"
-        aria-labelledby="products-title"
-        sx={{ pb: 8 }}
-      >
+          <Typography
+            variant="h4"
+            textAlign="center"
+            fontWeight="bold"
+            mb={6}
+          >
+            Lo que te ofrecemos
+          </Typography>
+
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                md: "2fr 1fr"
+              },
+              gap: 4
+            }}
+          >
+
+            <Box
+              sx={{
+                p: 5,
+                borderRadius: 4,
+                background: "linear-gradient(135deg,#1e293b,#334155)",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: 2
+              }}
+            >
+              <SpeedIcon sx={{ fontSize: 50 }} />
+
+              <Typography variant="h5" fontWeight="bold">
+                Rendimiento superior
+              </Typography>
+
+              <Typography sx={{ opacity: 0.8 }}>
+                Equipadas con motores que responden con potencia
+                y eficiencia en cualquier tipo de recorrido.
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: "grid", gap: 4 }}>
+
+              <Box
+                sx={{
+                  p: 3,
+                  borderRadius: 4,
+                  background: "#1e293b"
+                }}
+              >
+                <SecurityIcon sx={{ fontSize: 35, mb: 1 }} />
+
+                <Typography fontWeight="bold">
+                  Seguridad avanzada
+                </Typography>
+
+                <Typography sx={{ fontSize: 14, opacity: 0.7 }}>
+                  Sistemas diseñados para mayor control y estabilidad.
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  p: 3,
+                  borderRadius: 4,
+                  background: "#1e293b"
+                }}
+              >
+                <TwoWheelerIcon sx={{ fontSize: 35, mb: 1 }} />
+
+                <Typography fontWeight="bold">
+                  Diseño moderno
+                </Typography>
+
+                <Typography sx={{ fontSize: 14, opacity: 0.7 }}>
+                  Estética actual que se adapta a ciudad y carretera.
+                </Typography>
+              </Box>
+
+            </Box>
+
+          </Box>
+
+        </Container>
+      </Box>
+
+      {/* PRODUCTOS */}
+      <Container sx={{ py: 10 }}>
 
         <Typography
-          id="products-title"
           variant="h4"
-          component="h2"
-          fontWeight="bold"
           textAlign="center"
-          mb={4}
+          fontWeight="bold"
+          mb={6}
         >
-          Motocicletas disponibles
+          Catálogo destacado
         </Typography>
 
         <Box
@@ -214,23 +185,23 @@ export const Content = () => {
             gridTemplateColumns: {
               xs: "1fr",
               sm: "repeat(2,1fr)",
-              md: "repeat(3,1fr)",
-              lg: "repeat(4,1fr)"
+              md: "repeat(4,1fr)"
             },
-            gap: 3
+            gap: 4
           }}
         >
 
           {products.map((product) => (
 
-            <Card
+            <Box
               key={product.name}
               sx={{
-                borderRadius: 3,
-                transition: "0.3s",
-                "&:hover": {
-                  transform: "translateY(-8px)",
-                  boxShadow: 8
+                position: "relative",
+                borderRadius: 4,
+                overflow: "hidden",
+                cursor: "pointer",
+                "&:hover .overlay": {
+                  opacity: 1
                 }
               }}
             >
@@ -238,43 +209,45 @@ export const Content = () => {
               <CardMedia
                 component="img"
                 image={product.img}
-                alt={`Motocicleta ${product.name}`}
-                loading="lazy"
-                sx={{
-                  height: 220,
-                  objectFit: "cover"
-                }}
+                sx={{ height: 250 }}
               />
 
-              <CardContent>
+              <Box
+                className="overlay"
+                sx={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "rgba(0,0,0,0.7)",
+                  color: "white",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  opacity: 0,
+                  transition: "0.3s"
+                }}
+              >
 
-                <Typography component="h3" variant="h6">
+                <Typography variant="h6">
                   {product.name}
                 </Typography>
 
-                <Typography
-                  sx={{
-                    color: "#ff6b00",
-                    fontWeight: "bold",
-                    mt: 1
-                  }}
-                >
+                <Typography sx={{ mb: 2 }}>
                   {product.price}
                 </Typography>
 
                 <Button
-                  fullWidth
-                  variant="outlined"
-                  sx={{ mt: 2 }}
                   component={RouterLink}
                   to="/shopping"
+                  variant="contained"
+                  size="small"
                 >
-                  Más detalles
+                  Ver más
                 </Button>
 
-              </CardContent>
+              </Box>
 
-            </Card>
+            </Box>
 
           ))}
 
@@ -283,66 +256,33 @@ export const Content = () => {
       </Container>
 
       {/* REPOSITORIO */}
+      <Container sx={{ py: 10, textAlign: "center" }}>
 
-      <Box
-        component="section"
-        aria-labelledby="repo-title"
-        sx={{
-          py: 10,
-          px: 2,
-          textAlign: "center",
-          background: "linear-gradient(135deg,#0f172a,#1e293b)",
-          color: "white"
-        }}
-      >
+        <GitHubIcon sx={{ fontSize: 50, mb: 2 }} />
 
-        <Container maxWidth="md">
+        <Typography variant="h4" fontWeight="bold">
+          Código del proyecto
+        </Typography>
 
-          <Stack spacing={3} alignItems="center">
+        <Typography sx={{ mt: 2, color: "text.secondary" }}>
+          Revisa cómo fue construido este sistema con React,
+          Vite y Material UI.
+        </Typography>
 
-            <GitHubIcon sx={{ fontSize: 50 }} />
+        <Button
+          href="https://github.com/Mayaemerson14/Taller-3----Bajaj.git"
+          target="_blank"
+          variant="outlined"
+          sx={{
+            mt: 4,
+            borderRadius: 5,
+            px: 5
+          }}
+        >
+          Ir a GitHub
+        </Button>
 
-            <Typography
-              id="repo-title"
-              variant="h4"
-              component="h2"
-              fontWeight="bold"
-            >
-              Repositorio del Proyecto
-            </Typography>
-
-            <Typography sx={{ maxWidth: 600 }}>
-              Aplicación web desarrollada como proyecto académico
-              para mostrar un catálogo de motocicletas utilizando
-              React, Vite y Material UI.
-            </Typography>
-
-            <Button
-              component="a"
-              variant="contained"
-              size="large"
-              startIcon={<GitHubIcon />}
-              href="https://github.com/Mayaemerson14/Taller-3----Bajaj.git"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                mt: 2,
-                px: 4,
-                py: 1.5,
-                fontWeight: "bold",
-                borderRadius: 3,
-                background: "#24292e",
-                "&:hover": { background: "#000" }
-              }}
-            >
-              Ver repositorio
-            </Button>
-
-          </Stack>
-
-        </Container>
-
-      </Box>
+      </Container>
 
     </main>
   );

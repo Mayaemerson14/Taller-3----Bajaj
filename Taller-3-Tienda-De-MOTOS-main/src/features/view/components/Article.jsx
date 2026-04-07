@@ -5,7 +5,6 @@ import {
   CardContent,
   CardMedia,
   Button,
-  Divider,
   Box,
   Stack
 } from "@mui/material";
@@ -43,15 +42,18 @@ export const Article = () => {
       {/* HERO */}
       <Box
         sx={{
+          height: "80vh",
           position: "relative",
-          height: { xs: "60vh", md: "80vh" },
-          overflow: "hidden"
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          color: "white"
         }}
       >
         <Box
           component="img"
           src="/img/bajaja.jpg"
-          alt="Motocicleta deportiva Bajaj"
           sx={{
             position: "absolute",
             width: "100%",
@@ -64,91 +66,32 @@ export const Article = () => {
           sx={{
             position: "absolute",
             inset: 0,
-            background: "rgba(0,0,0,0.6)"
+            background: "linear-gradient(180deg,rgba(0,0,0,0.7),rgba(0,0,0,0.9))"
           }}
         />
 
-        <Box
-          sx={{
-            position: "relative",
-            zIndex: 1,
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "#ffffff",
-            textAlign: "center",
-            px: 2
-          }}
-        >
-          <Typography
-            component="h1"
-            variant="h3"
-            fontWeight="bold"
-            sx={{ fontSize: { xs: "2.5rem", md: "3.5rem" } }}
-          >
-            Bajaj Motor Store
+        <Box sx={{ position: "relative", zIndex: 1, px: 2 }}>
+          <Typography variant="h2" fontWeight="bold">
+            Bajaj Store
           </Typography>
 
-          <Typography
-            component="p"
-            variant="body1"
-            sx={{ mt: 2, maxWidth: 600 }}
-          >
-            Descubre las mejores motocicletas Bajaj con potencia,
-            economía y diseño deportivo.
+          <Typography sx={{ mt: 2, opacity: 0.85, maxWidth: 600 }}>
+            Motocicletas diseñadas para ofrecer potencia, eficiencia y estilo
+            en cada recorrido.
           </Typography>
         </Box>
       </Box>
 
-      {/* ESTADISTICAS */}
-      <Container sx={{ py: 6 }}>
-        <Stack
-          direction={{ xs: "column", md: "row" }}
-          spacing={6}
-          justifyContent="center"
-          textAlign="center"
-        >
-          <Box>
-            <Typography variant="h5" fontWeight="bold">
-              12+
-            </Typography>
-            <Typography color="text.secondary">
-              Modelos disponibles
-            </Typography>
-          </Box>
+      {/* PRODUCTOS */}
+      <Container maxWidth="lg" sx={{ py: 10 }}>
 
-          <Box>
-            <Typography variant="h5" fontWeight="bold">
-              500+
-            </Typography>
-            <Typography color="text.secondary">
-              Clientes satisfechos
-            </Typography>
-          </Box>
-
-          <Box>
-            <Typography variant="h5" fontWeight="bold">
-              Bajaj
-            </Typography>
-            <Typography color="text.secondary">
-              Marca líder en motos
-            </Typography>
-          </Box>
-        </Stack>
-      </Container>
-
-      {/* LISTA DE MOTOS */}
-      <Container maxWidth="lg" sx={{ pb: 8 }}>
         <Typography
-          component="h2"
           variant="h4"
           fontWeight="bold"
           textAlign="center"
           mb={6}
         >
-          Motocicletas disponibles
+          Catálogo disponible
         </Typography>
 
         <Box
@@ -157,13 +100,11 @@ export const Article = () => {
             gridTemplateColumns: {
               xs: "1fr",
               sm: "repeat(2,1fr)",
-              md: "repeat(3,1fr)",
-              lg: "repeat(4,1fr)"
+              md: "repeat(3,1fr)"
             },
-            gap: { xs: 3, md: 4 }
+            gap: 4
           }}
         >
-
           {motos.map((moto) => {
 
             const favorite = isFavorite(moto.id);
@@ -172,13 +113,12 @@ export const Article = () => {
               <Card
                 key={moto.id}
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  borderRadius: 3,
-                  transition: "0.25s",
-                  "&:hover": {
-                    transform: "translateY(-6px)",
-                    boxShadow: 6
+                  borderRadius: 4,
+                  overflow: "hidden",
+                  position: "relative",
+                  transition: "0.3s",
+                  "&:hover .overlay": {
+                    opacity: 1
                   }
                 }}
               >
@@ -186,111 +126,86 @@ export const Article = () => {
                 <CardMedia
                   component="img"
                   image={`/img/${moto.img}`}
-                  alt={`Moto ${moto.name}`}
-                  loading="lazy"
-                  sx={{ height: 200, objectFit: "cover" }}
+                  sx={{ height: 240 }}
                 />
 
-                <CardContent
+                <Box
+                  className="overlay"
                   sx={{
-                    flexGrow: 1,
+                    position: "absolute",
+                    inset: 0,
+                    background: "rgba(0,0,0,0.7)",
+                    opacity: 0,
+                    transition: "0.3s",
                     display: "flex",
                     flexDirection: "column",
-                    justifyContent: "space-between",
-                    textAlign: "center"
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "white"
                   }}
                 >
+                  <Stack spacing={1} alignItems="center">
+                    <Box display="flex" gap={1}>
+                      <SpeedIcon fontSize="small" />
+                      <Typography>{moto.speed}</Typography>
+                    </Box>
 
-                  <Box>
+                    <Box display="flex" gap={1}>
+                      <LocalGasStationIcon fontSize="small" />
+                      <Typography>{moto.fuel}</Typography>
+                    </Box>
 
-                    <Typography variant="h6" fontWeight="bold">
-                      {moto.name}
-                    </Typography>
+                    <Box display="flex" gap={1}>
+                      <SettingsIcon fontSize="small" />
+                      <Typography>{moto.trans}</Typography>
+                    </Box>
+                  </Stack>
+                </Box>
 
-                    <Typography
-                      fontWeight="bold"
-                      mb={2}
-                      sx={{
-                        color: "#ff6b00",
-                        fontSize: "1.2rem"
-                      }}
-                    >
-                      {moto.price}
-                    </Typography>
+                <CardContent>
 
-                    <Stack spacing={1}>
+                  <Typography fontWeight="bold">
+                    {moto.name}
+                  </Typography>
 
-                      <Box display="flex" justifyContent="center" gap={1}>
-                        <SpeedIcon fontSize="small" />
-                        <Typography variant="body2">
-                          {moto.speed}
-                        </Typography>
-                      </Box>
+                  <Typography
+                    sx={{
+                      color: "#ff4b2b",
+                      fontWeight: "bold",
+                      mb: 2
+                    }}
+                  >
+                    {moto.price}
+                  </Typography>
 
-                      <Box display="flex" justifyContent="center" gap={1}>
-                        <LocalGasStationIcon fontSize="small" />
-                        <Typography variant="body2">
-                          {moto.fuel}
-                        </Typography>
-                      </Box>
-
-                      <Box display="flex" justifyContent="center" gap={1}>
-                        <SettingsIcon fontSize="small" />
-                        <Typography variant="body2">
-                          {moto.trans}
-                        </Typography>
-                      </Box>
-
-                    </Stack>
-
-                  </Box>
-
-                  <Stack spacing={1.5} mt={3}>
-
+                  <Stack direction="row" spacing={1}>
                     <Button
-                      variant="contained"
                       fullWidth
+                      variant="contained"
                       onClick={() => addCart(moto)}
-                      sx={{
-                        backgroundColor: "#16a34a",
-                        fontWeight: "bold",
-                        "&:hover": {
-                          backgroundColor: "#15803d"
-                        }
-                      }}
+                      sx={{ borderRadius: 2 }}
                     >
                       Comprar
                     </Button>
 
                     <Button
                       variant={favorite ? "contained" : "outlined"}
-                      startIcon={<FavoriteBorderIcon />}
-                      fullWidth
                       onClick={() => toggleFavorite(moto)}
                       sx={{
-                        bgcolor: favorite ? "error.dark" : "transparent",
-                        color: favorite ? "white" : "text.primary",
-                        borderColor: favorite ? "error.dark" : "divider",
-                        "&:hover": {
-                          bgcolor: favorite ? "error.main" : "action.hover"
-                        }
+                        minWidth: "50px",
+                        borderRadius: 2
                       }}
                     >
-                      {favorite ? "Guardado" : "Agregar a favoritos"}
+                      <FavoriteBorderIcon />
                     </Button>
-
                   </Stack>
 
                 </CardContent>
 
               </Card>
             );
-
           })}
-
         </Box>
-
-        <Divider sx={{ my: 8 }} />
 
       </Container>
 
